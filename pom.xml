@@ -16,7 +16,11 @@
     <dependencies>
 
         <!-- compile dependencies -->
-
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.3</version>
+        </dependency>
         <!-- test dependencies -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -79,6 +83,8 @@
                             <arguments>
                                 <argument>${host}</argument>
                                 <argument>${port}</argument>
+                                <argument>${username}</argument>
+                                <argument>${password}</argument>
                             </arguments>
                         </configuration>
                     </plugin>

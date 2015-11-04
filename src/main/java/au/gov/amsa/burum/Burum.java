@@ -1,25 +1,32 @@
 package au.gov.amsa.burum;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.Socket;
-import java.net.UnknownHostException;
+
+import org.apache.commons.net.telnet.TelnetClient;
 
 public final class Burum {
 
     public static void connect(String host, int port) {
-        try (Socket socket = new Socket(host, port);
-                BufferedReader br = new BufferedReader(
-                        new InputStreamReader(socket.getInputStream()))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
+        TelnetClient t = new TelnetClient();
+        try {
+            t.connect(host, port);
+        } catch (IOException e1) {
+            throw new RuntimeException(e1);
+        }
+        try (InputStreamReader isr = new InputStreamReader(t.getInputStream())) {
+            int ch;
+            while ((ch = isr.read()) != -1) {
+                System.out.print((char) ch);
             }
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                t.disconnect();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
