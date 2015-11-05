@@ -2,14 +2,14 @@ package au.gov.amsa.burum;
 
 import java.io.IOException;
 
-public final class LES {
+public final class Les {
 
     private final String host;
     private final int port;
     private final String username;
     private final String password;
 
-    public LES(String host, int port, String username, String password) {
+    public Les(String host, int port, String username, String password) {
         this.host = host;
         this.port = port;
         this.username = username;

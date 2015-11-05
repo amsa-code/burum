@@ -79,7 +79,7 @@
                         </executions>
                         <configuration>
                             <classpathScope>test</classpathScope>
-                            <mainClass>au.gov.amsa.burum.LESMain</mainClass>
+                            <mainClass>au.gov.amsa.burum.LesMain</mainClass>
                             <arguments>
                                 <argument>${host}</argument>
                                 <argument>${port}</argument>
