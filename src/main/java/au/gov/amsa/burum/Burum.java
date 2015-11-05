@@ -3,14 +3,11 @@ package au.gov.amsa.burum;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.net.telnet.TelnetClient;
 
 public final class Burum {
 
-    private static final Charset UTF_8 = StandardCharsets.UTF_8;
     private static final String crlf = "\r\n";
 
     public static void connect(String host, int port, String username, String password) {
@@ -27,7 +24,7 @@ public final class Burum {
             while ((ch = (char) isr.read()) != -1) {
                 s.append(ch);
                 System.out.print(ch);
-                if (s.toString().endsWith("Please enter username:")) {
+                if (s.toString().trim().endsWith("Please enter username:")) {
                     out.print(username);
                     out.print(crlf);
                 }
