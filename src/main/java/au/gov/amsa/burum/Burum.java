@@ -22,6 +22,7 @@ public final class Burum {
         try (Reader r = new InputStreamReader(t.getInputStream());
                 PrintStream out = new PrintStream(t.getOutputStream())) {
             waitFor(r, s, "Please enter username: ");
+            System.out.println("-- found prompt, sending new line");
             out.print("\n");
             out.flush();
             waitFor(r, s, "Please enter username: ");
