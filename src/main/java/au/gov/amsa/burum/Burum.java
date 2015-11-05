@@ -24,7 +24,7 @@ public final class Burum {
             while ((ch = (char) isr.read()) != -1) {
                 s.append(ch);
                 System.out.print(ch);
-                if (s.toString().trim().endsWith("Please enter username:")) {
+                if (s.toString().endsWith("Please enter username: ")) {
                     out.print(username);
                     out.print(crlf);
                 }
