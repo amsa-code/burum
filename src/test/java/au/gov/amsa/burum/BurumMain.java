@@ -10,7 +10,7 @@ public class BurumMain {
         int port = Integer.parseInt(args[1]); // default telnet port
         String username = args[2];
         String password = args[3];
-        Burum.connect(host, port, username, password);
+        new Burum(host, port, username, password).connect();
     }
 
 }
