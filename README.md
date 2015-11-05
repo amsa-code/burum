@@ -8,7 +8,12 @@ Status: *pre-alpha*
 
 Test connection
 -----------------
-Logs in to the LES and calls the help command then logs off:
+The `LES.test` method does this:
+* opens a socket connection to the host and port
+* logs in using the username and password
+* calls the help command 
+* logs off
+
 ```java
 new Les(host, port, username, password).test();
 ```
