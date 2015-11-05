@@ -22,6 +22,9 @@ public final class Burum {
         try (Reader r = new InputStreamReader(t.getInputStream());
                 PrintStream out = new PrintStream(t.getOutputStream())) {
             waitFor(r, s, "Please enter username: ");
+            out.print("\n");
+            waitFor(r, s, "Please enter username: ");
+            out.println(username);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
