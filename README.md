@@ -6,3 +6,33 @@ A copy of the user manual is in this repository [here](https://github.com/amsa-c
 
 Status: *pre-alpha*
 
+Test connection
+-----------------
+Logs in to the LES and calls the help command then logs off:
+```java
+new Les(host, port, username, password).test();
+```
+Output
+```
+Trying 678...Open
+
+Welcome to BURUM LES PSDN   Service
+Please enter username: 
+Please enter password: 
+> 
+Address ... Change an address for a message.
+Delete .... Delete an earlier entered message.
+Dnid ...... Manage closed network information.
+Dsend ..... Send distress message to mobile unit.
+Egc ....... Send broadcast message.
+Pin ....... Change the password.
+Poll ...... Send poll command.
+Quit ...... End this session.
+Scan ...... Scan messages in store.
+Send ...... Send message to mobile unit.
+User ...... Register with username and password.
+View ...... View an earlier entered message.
+> 
+Logging off...
+```
+
