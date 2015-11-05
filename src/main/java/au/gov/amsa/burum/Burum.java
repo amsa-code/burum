@@ -29,6 +29,8 @@ public final class Burum {
             println(out, password);
             waitFor(r, s, "> ");
             println(out, "?");
+            waitFor(r, s, "> ");
+            println(out, "quit");
             waitFor(r, s, "boo");
         } catch (IOException e) {
             throw new RuntimeException(e);
