@@ -16,7 +16,7 @@ public final class Les {
         this.password = password;
     }
 
-    public void connect() {
+    public void test() {
         try (TelnetSession c = new TelnetSession(host, port)) {
             c.waitFor("Please enter username: ");
             c.println(username);

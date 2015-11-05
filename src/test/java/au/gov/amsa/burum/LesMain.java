@@ -10,7 +10,7 @@ public class LesMain {
         int port = Integer.parseInt(args[1]); // default telnet port
         String username = args[2];
         String password = args[3];
-        new Les(host, port, username, password).connect();
+        new Les(host, port, username, password).test();
     }
 
 }
