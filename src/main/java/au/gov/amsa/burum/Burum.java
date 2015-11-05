@@ -22,12 +22,12 @@ public final class Burum {
         try (Reader r = new InputStreamReader(t.getInputStream());
                 PrintStream out = new PrintStream(t.getOutputStream())) {
             waitFor(r, s, "Please enter username: ");
-            System.out.println("-- found prompt, sending new line");
-            out.print(crlf);
-            out.flush();
+            System.out.println("-- found prompt, sending username");
+            println(out, username);
             System.out.println("-- sent crlf");
-            waitFor(r, s, "Please enter username: ");
-            out.println(username);
+            waitFor(r, s, "Please enter password: ");
+            println(out, password);
+            waitFor(r, s, ">");
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -37,6 +37,12 @@ public final class Burum {
                 e.printStackTrace();
             }
         }
+    }
+
+    private static void println(PrintStream out, String s) {
+        out.print(s);
+        out.print(crlf);
+        out.flush();
     }
 
     private static void waitFor(Reader r, StringBuilder s, String value) {
