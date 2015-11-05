@@ -27,7 +27,9 @@ public final class Burum {
             System.out.println("-- sent crlf");
             waitFor(r, s, "Please enter password: ");
             println(out, password);
-            waitFor(r, s, ">");
+            waitFor(r, s, "> ");
+            println(out, "?");
+            waitFor(r, s, "boo");
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
