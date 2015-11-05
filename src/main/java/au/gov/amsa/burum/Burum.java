@@ -25,6 +25,7 @@ public final class Burum {
             System.out.println("-- found prompt, sending new line");
             out.print(crlf);
             out.flush();
+            System.out.println("-- sent crlf");
             waitFor(r, s, "Please enter username: ");
             out.println(username);
         } catch (IOException e) {
