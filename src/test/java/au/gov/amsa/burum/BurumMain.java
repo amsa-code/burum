@@ -8,7 +8,9 @@ public class BurumMain {
     public static void main(String[] args) throws UnknownHostException, IOException {
         String host = args[0];
         int port = Integer.parseInt(args[1]); // default telnet port
-        Burum.connect(host, port);
+        String username = args[2];
+        String password = args[3];
+        Burum.connect(host, port, username, password);
     }
 
 }
