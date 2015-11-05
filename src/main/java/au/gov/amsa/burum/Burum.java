@@ -31,7 +31,7 @@ public final class Burum {
             println(out, "?");
             waitFor(r, s, "> ");
             println(out, "quit");
-            waitFor(r, s, "boo");
+            waitFor(r, s, "Logging off...");
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
