@@ -3,6 +3,7 @@ package au.gov.amsa.burum;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.Reader;
 
 import org.apache.commons.net.telnet.TelnetClient;
 
@@ -18,17 +19,9 @@ public final class Burum {
             throw new RuntimeException(e1);
         }
         StringBuilder s = new StringBuilder();
-        try (InputStreamReader isr = new InputStreamReader(t.getInputStream());
+        try (Reader r = new InputStreamReader(t.getInputStream());
                 PrintStream out = new PrintStream(t.getOutputStream())) {
-            char ch;
-            while ((ch = (char) isr.read()) != -1) {
-                s.append(ch);
-                System.out.print(ch);
-                if (s.toString().endsWith("Please enter username: \n")) {
-                    out.print(username);
-                    out.print(crlf);
-                }
-            }
+            waitFor(r, s, "Please enter username: ");
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -37,6 +30,20 @@ public final class Burum {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private static void waitFor(Reader r, StringBuilder s, String value) {
+        char ch;
+        try {
+            while ((ch = (char) r.read()) != -1) {
+                s.append(ch);
+                System.out.print(ch);
+                if (s.toString().endsWith(value))
+                    return;
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
