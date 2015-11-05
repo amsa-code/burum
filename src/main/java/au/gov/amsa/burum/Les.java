@@ -17,8 +17,7 @@ public final class Les {
     }
 
     public void connect() {
-        try (TelnetSession client = new TelnetSession(host, port)) {
-            TelnetConversation c = client.createConversation();
+        try (TelnetSession c = new TelnetSession(host, port)) {
             c.waitFor("Please enter username: ");
             c.println(username);
             c.waitFor("Please enter password: ");

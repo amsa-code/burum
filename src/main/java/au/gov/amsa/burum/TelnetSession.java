@@ -12,6 +12,7 @@ public final class TelnetSession implements Closeable {
     private final String host;
     private final int port;
     private final TelnetClient client = new TelnetClient();
+    private volatile TelnetConversation conversation;
 
     public TelnetSession(String host, int port) {
         this.host = host;
@@ -40,8 +41,20 @@ public final class TelnetSession implements Closeable {
         return client.getInputStream();
     }
 
-    public TelnetConversation createConversation() {
-        connect();
-        return new TelnetConversation(getInputStream(), getOutputStream());
+    public void waitFor(String value) {
+        getConversation().waitFor(value);
+    }
+
+    public void println(String value) {
+        getConversation().println(value);
+    }
+
+    private synchronized TelnetConversation getConversation() {
+        if (conversation == null) {
+            if (!client.isConnected())
+                connect();
+            conversation = new TelnetConversation(getInputStream(), getOutputStream());
+        }
+        return conversation;
     }
 }
